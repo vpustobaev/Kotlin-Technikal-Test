@@ -1,6 +1,6 @@
-package org.example.resources
+package org.example.resource
 
-import org.example.model.response.HealthResponse
+import org.example.response.HealthResponse
 import java.time.Instant
 import javax.ws.rs.GET
 import javax.ws.rs.Path

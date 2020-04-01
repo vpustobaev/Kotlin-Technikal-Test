@@ -1,6 +1,6 @@
-package org.example.resources
+package org.example.resource
 
-import org.example.model.response.EasterEggResponse
+import org.example.response.EasterEggResponse
 import java.util.*
 import javax.ws.rs.GET
 import javax.ws.rs.Path

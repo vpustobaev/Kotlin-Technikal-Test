@@ -1,18 +1,22 @@
-import org.example.api.GitHubApi
-import org.example.util.Deserializer
 import org.example.converter.UserConverter
-import org.example.resources.EasterEggResource
-import org.example.resources.GitHubResource
-import org.example.resources.HealthResource
-import org.example.resources.UserResource
-import org.example.service.UserService
+import org.example.converter.github.GitHubActorConverter
+import org.example.converter.github.GitHubEventConverter
+import org.example.converter.github.GitHubRepoConverter
+import org.example.converter.github.GitHubUserConverter
+import org.example.resource.EasterEggResource
+import org.example.resource.GitHubResource
+import org.example.resource.HealthResource
+import org.example.resource.UserResource
+import org.example.service.user.MemoryBasedUserService
+import org.example.service.GitHubService
 import javax.ws.rs.core.Application
 
 class JerseyApplication : Application() {
     override fun getSingletons(): MutableSet<Any> {
         return mutableSetOf(
-            UserResource(UserService(), UserConverter()), HealthResource(), EasterEggResource(), GitHubResource(
-                GitHubApi(), Deserializer()
+            UserResource(MemoryBasedUserService(), UserConverter()), HealthResource(), EasterEggResource(),
+            GitHubResource(GitHubService(), GitHubEventConverter(GitHubActorConverter(), GitHubRepoConverter()),
+                GitHubUserConverter()
             )
         )
     }

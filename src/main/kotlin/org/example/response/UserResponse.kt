@@ -1,4 +1,4 @@
-package org.example.model.response
+package org.example.response
 
 class UserResponse {
 
